@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f2efe8"><title>Moneyverse — Your money, in motion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+<aside class="rail">
+  <a class="logo" href="#"><span class="logo-mark">M</span><span>MONEY<span class="logo-light">VERSE</span></span></a>
+  <div class="rail-label">YOUR SPACE</div>
+  <nav id="nav">
+    <button class="nav-link active" data-page="home"><i>⌂</i><span>My universe</span><kbd>01</kbd></button>
+    <button class="nav-link" data-page="activity"><i>↕</i><span>Activity log</span><kbd>02</kbd></button>
+    <button class="nav-link" data-page="pockets"><i>▣</i><span>Money pockets</span><kbd>03</kbd></button>
+    <button class="nav-link" data-page="goals"><i>✳</i><span>Dream fund</span><kbd>04</kbd></button>
+    <button class="nav-link" data-page="planner"><i>◷</i><span>Money planner</span><kbd>05</kbd></button>
+    <button class="nav-link" data-page="insights"><i>⌁</i><span>Insights</span><kbd>06</kbd></button>
+  </nav>
+  <div class="rail-bottom">
+    <div class="streak"><span class="streak-icon">✦</span><div><b id="streakDays">0 day</b><small>money check-in streak</small></div></div>
+    <button class="nav-link" data-page="settings"><i>⚙</i><span>Settings</span></button>
+    <div class="local-note"><span class="pulse"></span> Private space · synced account</div>
+  </div>
+</aside>
+<main class="workspace">
+<header class="top">
+ <div><div class="eyebrow" id="topDate">YOUR FINANCIAL UNIVERSE</div><h1 id="pageTitle">A little more in control<span>.</span></h1><p id="pageDesc">Every rupiah has a place. Give yours a direction.</p></div>
+ <div class="top-actions"><button class="circle-btn" id="soundBtn" title="Sound">♫</button><button class="circle-btn" id="themeBtn" title="Theme">◐</button><button class="user-pill" id="userBtn"><span class="user-avatar">M</span><span><b id="userName">My space</b><small>PERSONAL MODE</small></span><span>⌄</span></button></div>
+</header>
+
+<section class="page active" id="page-home">
+ <div class="hero-row">
+  <article class="net-worth">
+   <div class="net-top"><span class="eyebrow light">TOTAL AVAILABLE</span><span class="live"><i></i> UPDATED LIVE</span></div>
+   <div class="net-amount" id="netBalance">Rp0</div><div class="net-sub">Your money universe, at a glance.</div>
+   <div class="net-foot"><div><small>INCOME THIS MONTH</small><b id="monthIncome">Rp0</b></div><div><small>SPENT THIS MONTH</small><b id="monthExpense">Rp0</b></div><div><small>SET ASIDE</small><b id="monthSaved">Rp0</b></div></div>
+   <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+  </article>
+  <article class="health-card">
+   <div class="card-kicker">YOUR MONEY VITALS <span>✳</span></div>
+   <div class="health-ring" id="healthRing"><div><b id="healthScore">--</b><small>HEALTH</small></div></div>
+   <div class="health-caption"><b id="healthLabel">Building your picture</b><small id="healthHint">Add a few transactions to unlock your score.</small></div>
+   <div class="health-foot"><span>Based on your spending & saving habits</span><b>↗</b></div>
+  </article>
+ </div>
+ <div class="quick-actions">
+  <button class="quick primary" id="addIncome"><span>＋</span><b>Money in</b><small>Record income</small></button>
+  <button class="quick" id="addExpense"><span>↗</span><b>Money out</b><small>Record spending</small></button>
+  <button class="quick" id="moveMoney"><span>⇄</span><b>Move money</b><small>Between pockets</small></button>
+  <button class="quick" id="quickGoal"><span>✳</span><b>Dream fund</b><small>Save for a goal</small></button>
+ </div>
+ <div class="home-grid">
+  <section class="surface flow-card">
+   <div class="section-head"><div><div class="eyebrow">MONEY MOVEMENT</div><h2>Your cashflow</h2><p>How your money moved this month.</p></div><select id="flowRange"><option value="7">7 days</option><option value="30" selected>30 days</option><option value="90">90 days</option></select></div>
+   <div class="flow-legend"><span><i class="in-dot"></i>Inflow</span><span><i class="out-dot"></i>Outflow</span></div><canvas id="flowChart" height="190"></canvas>
+   <div class="flow-total"><div><small>NET MOVEMENT</small><b id="netFlow">Rp0</b></div><div><small>DAILY SPEND AVERAGE</small><b id="dailyAvg">Rp0</b></div></div>
+  </section>
+  <section class="surface pocket-preview">
+   <div class="section-head"><div><div class="eyebrow">WHERE IT LIVES</div><h2>Money pockets</h2><p>Give every rupiah a job.</p></div><button class="text-link" data-goto="pockets">View all ↗</button></div>
+   <div id="pocketPreview" class="pocket-stack"></div>
+   <button class="dashed-add" id="newPocket">＋ Create a pocket</button>
+  </section>
+ </div>
+ <div class="home-grid second-grid">
+  <section class="surface">
+   <div class="section-head"><div><div class="eyebrow">RECENT FOOTPRINTS</div><h2>Latest activity</h2><p>Your recent money moves.</p></div><button class="text-link" data-goto="activity">All activity ↗</button></div>
+   <div id="recentList" class="activity-list"></div>
+  </section>
+  <section class="surface">
+   <div class="section-head"><div><div class="eyebrow">NEXT MILESTONE</div><h2>Dream fund</h2><p>Progress feels good, keep going.</p></div><button class="text-link" data-goto="goals">All goals ↗</button></div>
+   <div id="goalPreview" class="goal-preview"></div>
+  </section>
+ </div>
+</section>
+
+<section class="page" id="page-activity">
+ <div class="page-intro"><div><div class="eyebrow">THE FULL STORY</div><h2>Activity log</h2><p>Every little move, in one place.</p></div><button class="dark-button" id="activityAdd">＋ New activity</button></div>
+ <div class="surface"><div class="filterbar"><input id="search" placeholder="⌕  Search notes or categories"><select id="typeFilter"><option value="all">All activity</option><option value="income">Money in</option><option value="expense">Money out</option><option value="saving">Savings</option><option value="transfer">Transfers</option></select><select id="monthFilter"><option value="all">All dates</option></select><button class="outline-button" id="csvBtn">Export CSV ↓</button></div><div id="allActivity" class="activity-list full-list"></div></div>
+</section>
+
+<section class="page" id="page-pockets">
+ <div class="page-intro"><div><div class="eyebrow">ENVELOPE METHOD</div><h2>Money pockets</h2><p>Separate your money by purpose. Move it when life changes.</p></div><button class="dark-button" id="pocketAdd">＋ New pocket</button></div>
+ <div class="pocket-explainer"><b>Think in pockets, not one big balance.</b><span>Set aside money for needs, wants, plans, and unexpected moments.</span></div>
+ <div id="pocketGrid" class="pocket-grid"></div>
+</section>
+
+<section class="page" id="page-goals">
+ <div class="page-intro"><div><div class="eyebrow">FUTURE YOU WILL THANK YOU</div><h2>Dream fund</h2><p>Turn “one day” into a number and a plan.</p></div><button class="dark-button" id="goalAdd">＋ Create a dream</button></div>
+ <div id="goalGrid" class="goal-grid"></div>
+</section>
+
+<section class="page" id="page-planner">
+ <div class="page-intro"><div><div class="eyebrow">STAY AHEAD</div><h2>Money planner</h2><p>Plan allowances, recurring money, and upcoming bills.</p></div><button class="dark-button" id="plannerAdd">＋ Add a schedule</button></div>
+ <div class="planner-grid">
+  <section class="surface"><div class="section-head"><div><div class="eyebrow">DAILY ALLOWANCE</div><h2>Jajan otomatis</h2><p>Daily money-in, added when you open the app.</p></div><span class="planner-symbol">☼</span></div><form id="allowanceForm" class="allowance-form"><label>Allowance per day (IDR)</label><input type="number" name="amount" min="0" id="allowanceInput" placeholder="e.g. 25000"><button class="dark-button">Save allowance</button></form><div class="allowance-status" id="allowanceStatus"></div></section>
+  <section class="surface"><div class="section-head"><div><div class="eyebrow">UPCOMING</div><h2>Bill reminders</h2><p>Don't let due dates surprise you.</p></div><button class="text-link" id="billAdd">＋ Add bill</button></div><div id="billList" class="bill-list"></div></section>
+ </div>
+ <section class="surface schedule-surface"><div class="section-head"><div><div class="eyebrow">REPEATING PATTERNS</div><h2>Recurring transactions</h2><p>Income or expenses that happen on a schedule.</p></div></div><div id="recurringList" class="activity-list"></div></section>
+</section>
+
+<section class="page" id="page-insights">
+ <div class="page-intro"><div><div class="eyebrow">KNOW YOUR HABITS</div><h2>Insights</h2><p>Understand your patterns, without the spreadsheet headache.</p></div><span class="period-pill" id="insightPeriod"></span></div>
+ <div class="insight-cards" id="insightCards"></div>
+ <div class="home-grid"><section class="surface"><div class="section-head"><div><div class="eyebrow">WHERE IT GOES</div><h2>Spending breakdown</h2><p>Categories taking the biggest slice.</p></div></div><div id="categoryBreakdown"></div></section><section class="surface"><div class="section-head"><div><div class="eyebrow">A SMALL CHALLENGE</div><h2>Your next move</h2><p>One useful action to try.</p></div></div><div class="challenge" id="challenge"></div></section></div>
+</section>
+
+<section class="page" id="page-settings">
+ <div class="page-intro"><div><div class="eyebrow">MAKE IT YOURS</div><h2>Settings & data</h2><p>Your space, your rules. Keep a backup of your data.</p></div></div>
+ <section class="surface cloud-panel" style="margin-bottom:14px">
+  <div class="section-head"><div><div class="eyebrow">CLOUD ACCOUNT</div><h2>Sync your money universe</h2><p id="cloudStatus">Not connected · data is saved on this device.</p></div><span class="cloud-indicator" id="cloudIndicator">LOCAL</span></div>
+  <div id="authSignedOut"><form id="authForm" class="auth-form"><div class="form-row"><div><label>Email</label><input id="authEmail" type="email" autocomplete="email" placeholder="you@example.com" required></div><div><label>Password</label><input id="authPassword" type="password" minlength="6" autocomplete="current-password" placeholder="At least 6 characters" required></div></div><div class="auth-actions"><button class="dark-button" type="submit" id="loginBtn">Login</button><button class="outline-button" type="button" id="registerBtn">Create account</button></div></form><p class="setting-copy tiny">First time login? Create an account. Your existing local data will be copied to your cloud account if it has no saved data yet.</p></div>
+  <div id="authSignedIn" hidden><div class="signed-in-row"><div><b id="signedInEmail"></b><small>Your data is syncing securely with your account.</small></div><button class="outline-button" id="logoutBtn" type="button">Log out</button></div></div>
+ </section>
+ <div class="settings-grid"><section class="surface"><h3>Personal space</h3><form id="profileForm"><label>Your display name</label><input name="name" id="profileInput" maxlength="32"><button class="dark-button">Save profile</button></form><hr><h3>Sound & appearance</h3><div class="setting-row"><span><b>Sound effects</b><small>Soft tones for successful actions.</small></span><button class="toggle" id="soundSetting">ON</button></div><div class="setting-row"><span><b>Dark theme</b><small>Switch to a low-light look.</small></span><button class="toggle" id="themeSetting">OFF</button></div></section>
+ <section class="surface"><h3>Your data</h3><p class="setting-copy">A local copy is kept in this browser. When signed in, your data also syncs to your private Firebase account.</p><button class="outline-button wide" id="backupBtn">Download full backup JSON ↓</button><label class="upload-button wide">Restore backup JSON ↑<input type="file" id="restoreInput" accept="application/json" hidden></label><button class="danger-button wide" id="resetBtn">Delete all local data</button><p class="setting-copy tiny">This app does not connect to a bank. Cloud sync requires Firebase setup and login.</p></section></div>
+</section>
+
+<footer>MADE FOR YOUR MONEY JOURNEY <span>✳</span> MONEYVERSE / PRIVATE FINANCE SPACE</footer>
+</main>
+</div>
+<div class="modal-wrap" id="modalWrap" hidden><section class="modal"><button class="modal-x" id="modalClose">×</button><div class="eyebrow" id="modalEyebrow">MONEYVERSE</div><h2 id="modalTitle">Add activity</h2><p id="modalDesc">Give this money move a little context.</p><div id="modalContent"></div></section></div>
+<div class="toast" id="toast"></div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="app.js"></script>
+</body></html>
